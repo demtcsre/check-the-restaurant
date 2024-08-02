@@ -1,0 +1,38 @@
+# Python
+# Byte-compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+
+# Flask migrations
+migrations/
+
+# IDE and editor folders
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Node.js Dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+
+# Log files
+*.log
+
+# npm
+package-lock.json
+yarn.lock
+
+# React Static files
+public/
+
+# Build and cache files
+.cache/
