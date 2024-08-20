@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+	
+{% block content %}
+	<div class="form">
+        <form method="POST" action="">
+			{{ form.hidden_tag() }}
+			<fieldset class="">
+				<legend class="">Make Reservation</legend>
+
+				<div class="">
+					{{ form.fullname.label(class="") }}
+
+					{% if form.fullname.errors%}
+						{{ form.fullname(class="") }}
+						<div class="">
+							{% for error in form.fullname.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.fullname(class=" ") }}
+					{% endif %}
+				</div>
+
+				<div class="">
+					{{ form.num_people.label(class="") }}
+
+					{% if form.num_people.errors%}
+						{{ form.num_people(class="") }}
+						<div class="">
+							{% for error in form.num_people.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.num_people(class=" ") }}
+					{% endif %}
+				</div>
+				
+				<div class="">
+					{{ form.date.label(class="") }}
+
+					{% if form.date.errors%}
+						{{ form.date(class="") }}
+						<div class="">
+							{% for error in form.date.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.date(class=" ") }}
+					{% endif %}
+				</div>
+
+				
+				<div class="">
+					{{ form.time_start.label(class="") }}
+
+					{% if form.time_start.errors%}
+						{{ form.time_start(class="") }}
+						<div class="">
+							{% for error in form.time_start.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.time_start(class=" ") }}
+					{% endif %}
+				</div>
+
+				
+				<div class="">
+					{{ form.time_end.label(class="") }}
+
+					{% if form.time_end.errors%}
+						{{ form.time_end(class="") }}
+						<div class="">
+							{% for error in form.time_end.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.time_end(class=" ") }}
+					{% endif %}
+				</div>
+			</fieldset>
+			<div class="submit">
+				{{ form.submit(class="btn btn-outline-info") }}
+			</div>
+		</form>
+	</div>
+{% endblock content %}
