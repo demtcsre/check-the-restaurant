@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm, RecaptchaField
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, EmailField, IntegerField, TimeField, DateField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange
 from application.utils import exists_username
 
 class SignUpForm(FlaskForm):
@@ -18,9 +18,8 @@ class LoginForm(FlaskForm):
     submit   = SubmitField("Login")
 
 class ReservationForm(FlaskForm):
-    fullname     = StringField("Fullname", validators=[DataRequired()])
-    num_people   = IntegerField("Number of People", validators=[DataRequired()])
+    num_people   = IntegerField("Number of People", validators=[DataRequired(), NumberRange(min=1, max=10)])
+    table_id     = IntegerField("Table ID", validators=[DataRequired(), NumberRange(min=1, max=10, message="Please enter a valid table ID.")])
     date         = DateField("Date", validators=[DataRequired()])
     time_start   = TimeField("Time Start", validators=[DataRequired()])
-    time_end     = TimeField("Time End", validators=[DataRequired()])
     submit       = SubmitField("Book Table")

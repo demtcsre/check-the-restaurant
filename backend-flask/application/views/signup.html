@@ -4,10 +4,10 @@
 	<div class="form">
         <form method="POST" action="" enctype="multipart/form-data">
 			{{ form.hidden_tag() }}
-			<fieldset class="">
+			<fieldset class="register">
 				<legend class="">Register</legend>
 
-				<div class="">
+				<div class="input">
 					{{ form.username.label(class="") }}
 
 					{% if form.username.errors%}
@@ -22,7 +22,7 @@
 					{% endif %}
 				</div>
 
-				<div class="">
+				<div class="input">
 					{{ form.fullname.label(class="") }}
 
 					{% if form.fullname.errors%}
@@ -37,7 +37,7 @@
 					{% endif %}
 				</div>
                 
-				<div class="">
+				<div class="input">
 					{{ form.email.label(class="") }}
 
 					{% if form.email.errors%}
@@ -52,7 +52,7 @@
 					{% endif %}
 				</div>
 
-				<div class="">
+				<div class="input">
 					{{ form.password.label(class="") }}
 
 					{% if form.password.errors%}
@@ -67,7 +67,7 @@
 					{% endif %}
 				</div>
 
-				<div class="">
+				<div class="input">
 					{{ form.confirm_password.label(class="") }}
 
 					{% if form.confirm_password.errors%}
@@ -83,10 +83,10 @@
 				</div>
 			</fieldset>
 			<div class="submit">
-				{{ form.submit(class="btn btn-outline-info") }}
                 <small class="">
-                    <a href="{{ url_for('login') }}">Have an account already?</a>
+                    <a href="{{ url_for('login') }}">Have an account already? <span class="submit">Login</span></a>
                 </small>
+				{{ form.submit(class="btn btn-outline-info") }}
 			</div>
 		</form>
 	</div>

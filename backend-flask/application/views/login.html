@@ -4,10 +4,10 @@
 	<div class="form">
         <form method="POST" action="">
 			{{ form.hidden_tag() }}
-			<fieldset class="">
+			<fieldset class="login">
 				<legend class="">Login</legend>
 
-				<div class="">
+				<div class="input">
 					{{ form.username.label(class="") }}
 
 					{% if form.username.errors%}
@@ -23,7 +23,7 @@
 
 				</div>
 
-				<div class="">
+				<div class="input">
 					{{ form.password.label(class="") }}
 
 					{% if form.password.errors%}
@@ -40,10 +40,10 @@
 				</div>
 			</fieldset>
 			<div class="submit">
-				{{ form.submit(class="btn btn-outline-info") }}
 				<small class="">
-					<a href="{{ url_for('signup') }}">Have no account yet?</a>
+					<a href="{{ url_for('signup') }}">Have no account yet? <span class="submit">Signup</span></a>
 				</small>	
+				{{ form.submit(class="btn btn-outline-info") }}
 			</div>
 		</form>
 	</div>

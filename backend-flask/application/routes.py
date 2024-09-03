@@ -5,6 +5,7 @@ from application import app
 from application.models import *
 from application.forms import *
 from application.utils import *
+from datetime import timedelta
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -55,39 +56,40 @@ def logout():
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html', title='Home')
+    user = current_user
+    reservations = current_user.reservation_made
+    
+    return render_template('index.html', title='Home', user=user, reservations=reservations)
 
-@app.route('/tables', methods=['GET', 'POST'])
+@app.route('/make-reservation', methods=['GET', 'POST'])
 @login_required
-def tables():
-    return render_template('tables.html', title='Tables Available')
-
-@app.route('/my-reservations', methods=['GET', 'POST'])
-@login_required
-def my_reservations():
-    return render_template('reservations.html', title='My Reservations')
-
-@app.route('/make-reservation/<int:table_id>', methods=['GET', 'POST'])
-@login_required
-def make_reservation(table_id):
+def make_reservation():
     form = ReservationForm()
 
     if form.validate_on_submit():
 
         reservation = Reservation(
-            fullname   = form.fullname.data,
-            num_people = form.num_people.data,
-            date       = form.date.data,
-            time_start = form.time_start.data,
-            time_end   = form.time_end.data,
-            table_id   = table_id,
-            user_id    = current_user.id
+            num_people     = form.num_people.data,
+            date           = form.date.data,
+            time_start     = form.time_start.data,
+            time_end       = (datetime.combine(form.date.data, form.time_start.data) + timedelta(hours=1)).time(),
+            reserved_by    = current_user.id,
+            table_id       = form.table_id.data
         )
 
-        db.session.add(reservation)
-        db.session.commit()
-        flash('Reservation has been made', 'success')
-        return redirect(url_for('my_reservations'))
+        if datetime.now().date() < form.date.data:
+            pass
+        else:
+            flash("Can't reserve table in the past", 'error')
+
+        if is_collision(reservation):
+            flash("This table is already reserved at this time", 'error')
+        else:
+            db.session.add(reservation)
+            db.session.commit()
+            flash('Reservation has been made', 'success')
+            return redirect(url_for('index'))
+
     return render_template('make-reservation.html', title='Make Reservation', form=form)
 
 if __name__ == '__main__':

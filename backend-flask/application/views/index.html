@@ -1,16 +1,18 @@
 {% extends 'layout.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% if title %}
-        <title>{{ title }} - Check The Restaurant</title>
-    {% else %}
-        <title>Check The Restaurant</title>
-    {% endif %}
-</head>
-<body>
-    <h1>Hello there!</h1>
-</body>
-</html>
+
+{% block content %}
+    <div class="container">
+        <h2>{{ user.username }} Reservations</h2>
+        <div class="reservation-list">
+            {% for reservation in reservations %}
+                <div class="reservation", style="margin: 1em 0;">
+                    <p>Table: {{ reservation.table_id }}</p>
+                    <p>Date: {{ reservation.date }}</p>
+                    <p>Time Start: {{ reservation.time_start }}</p>
+                    <p>Finish: {{ reservation.time_end }}</p>
+                    <p>Number of guests: {{ reservation.num_people }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{%endblock%}

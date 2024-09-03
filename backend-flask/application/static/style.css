@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    background-color: #111213;
+    color: #fffefd;
+    font-family: "Poppins", sans-serif;
+}
+
+section.content{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a{
+    color: #fffefd;
+    text-decoration: none;
+}
+
+header{
+    text-align: center;
+}
+
+header>ul{
+    display: flex;
+    width: 40vw;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 1em auto;
+}
+
+header>ul>li{
+    list-style: none;
+    font-size: 1.5em;
+}
+
+div.alert-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 2em;
+    margin: 0.5em auto;
+    color: #f8f9fc;
+    border-radius: 1em;
+}
+
+fieldset{
+    display: flex;
+    flex-direction: column;
+    margin: 1em auto;
+    width: 25em;
+    background-color: #2f3237;
+    border-radius: 1em;
+}
+
+fieldset>legend{
+    font-size: 1.5em;
+    color: #f8f9fc;
+    text-align: center;
+}
+
+fieldset>div{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    margin: 0.75em auto;
+}
+
+fieldset>div>input {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.5em 0;
+}
+
+div.input{
+    margin: 0.5em auto;
+}
+
+div.submit{
+    display: flex;
+    flex-direction: column;
+    margin: 1em auto;
+    width: 25em;
+    border-radius: 1em;
+}
+
+div.submit>input{
+    width: 10vw;
+    height: 5vh;
+    font-size: 1.25em;
+}
+
+input {
+    width: 100%;
+    margin: 0.25em auto;
+    border-radius: 0.5em;
+    border: 0.0625em solid #dee3ed;
+    font-family: inherit;
+}
+
+input#submit{
+    margin-top: 0.75em;
+}
+
+span.submit{
+    font-weight: bold;
+}
+
+div.container{
+    margin: 2em auto;
+    width: 50%;
+}
+
+footer{
+    text-align: center;
+    margin: 1em 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
